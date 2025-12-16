@@ -1,6 +1,6 @@
 # Database Schema
 
-Users (
+Users (  
     user_id PK  
     email UNIQUE  
     password_hash  
@@ -16,7 +16,7 @@ Library_cards (
     active  
 )  
 
-Books (
+Books (  
     isbn PK  
     title  
     genre  
@@ -25,13 +25,13 @@ Books (
     author  
 )
 
-Copies (
+Copies (  
     barcode PK  
     isbn FK  
     status (available, checked_out, lost)  
 )
 
-Checkouts (
+Checkouts (  
     checkout_id PK  
     user_id FK  
     barcode FK
@@ -40,7 +40,7 @@ Checkouts (
     return_date NULL  
 )
 
-Holds (
+Holds (  
     hold_id PK  
     user_id FK  
     isbn FK  
