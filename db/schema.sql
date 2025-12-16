@@ -7,6 +7,14 @@ CREATE TABLE users (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE library_cards (
+    card_number TEXT PRIMARY KEY,
+    user_id INTEGER NOT NULL UNIQUE,
+    issued_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 CREATE TABLE books (
     isbn TEXT PRIMARY KEY,
     title TEXT NOT NULL,
