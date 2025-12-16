@@ -9,6 +9,13 @@ Users (
     created_at  
 )
 
+Library_cards (  
+    card_number PK  
+    user_id FK  
+    issued_at  
+    active  
+)  
+
 Books (
     isbn PK  
     title  
