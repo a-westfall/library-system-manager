@@ -1,38 +1,41 @@
 # Database Schema
 
 Users (
-    user_id PK
-    email
-    name
-    role
-    dob
+    user_id PK  
+    email UNIQUE  
+    password_hash  
+    name  
+    role (patron, librarian, admin)  
+    created_at  
 )
 
 Books (
-    isbn PK
-    genre
-    date_published
-    publisher
-    author
+    isbn PK  
+    title  
+    genre  
+    date_published  
+    publisher  
+    author  
 )
 
 Copies (
-    barcode PK
-    isbn
-    status (available, checked out, overdue, lost)
+    barcode PK  
+    isbn FK  
+    status (available, checked_out, lost)  
 )
 
 Checkouts (
-    user_id
-    barcode
-    checkout_date
-    return_date
-    PK (user_id, barcode)
+    checkout_id PK  
+    user_id FK  
+    barcode FK
+    checkout_date  
+    due_date  
+    return_date NULL  
 )
 
 Holds (
-    user_id
-    barcode
-    date_placed
-    PK (user_id, barcode)
+    hold_id PK  
+    user_id FK  
+    isbn FK  
+    date_placed  
 )
