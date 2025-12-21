@@ -2,10 +2,10 @@
 ## Sprint One Backlog  
 12/15/2025 - MM/DD/2025  
 
-- [ ] Draft database schema
-- [ ] Review schema
-- [ ] Implement schema in PostgreSQL
-- [ ] Add constraints
+- [X] Draft database schema
+- [X] Review schema
+- [X] Implement schema in PostgreSQL
+- [X] Add constraints
 - [ ] Set up backend structure
 - [ ] Implement checkout logic
 - [ ] Implement return logic
