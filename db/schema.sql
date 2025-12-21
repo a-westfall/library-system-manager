@@ -50,3 +50,6 @@ CREATE TABLE holds (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (isbn) REFERENCES books(isbn)
 );
+
+ALTER TABLE checkouts
+ADD CONSTRAINT due_date_check CHECK (due_date - checkout_date = 21);
