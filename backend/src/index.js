@@ -8,13 +8,19 @@ require('dotenv').config();
 
 const express = require('express');
 
+// import user routes
+const userRoutes = require('./routes/userRoutes');
+
 const app = express();
 
 // port for app to run on
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // parse incoming JSON requests
 app.use(express.json());
+
+// user routes
+app.use('/api/users', userRoutes);
 
 // test route
 app.get('/', (req, res) => {
@@ -27,6 +33,3 @@ app.listen(PORT, () => {
 
     console.log(`Server running on port ${PORT}`);
 });
-
-// temporary db connection test
-const pool = require('./db/pool');
