@@ -4,7 +4,6 @@
     Handles logic for user registration and login.
 */
 
-// what do these do? just makes sure the right files are used, or is it like include files in C++?
 const pool = require('../db/pool');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
@@ -56,7 +55,7 @@ const registerUser = async (req, res) => {
     }
 };
 
-// POST /login ?
+// POST /login
 const loginUser = async(req, res) => {
 
     // pull fields from request
