@@ -11,6 +11,9 @@ const express = require('express');
 // import user routes
 const userRoutes = require('./routes/userRoutes');
 
+// import checkout routes
+const checkoutRoutes = require('./routes/checkoutRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -21,6 +24,9 @@ app.use(express.json());
 
 // user routes
 app.use('/api/users', userRoutes);
+
+// checkout routes
+app.use('/api/checkout', checkoutRoutes);
 
 // test route
 app.get('/', (req, res) => {
