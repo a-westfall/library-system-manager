@@ -17,6 +17,9 @@ const checkoutRoutes = require('./routes/checkoutRoutes');
 // import return routes
 const returnRoutes = require('./routes/returnRoutes');
 
+// import overdue routes
+const overdueRoutes = require('./routes/overdueRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -33,6 +36,9 @@ app.use('/api/checkout', checkoutRoutes);
 
 // return routes
 app.use('/api/return', returnRoutes);
+
+// overdue routes
+app.use('/api/overdue', overdueRoutes);
 
 // test route
 app.get('/', (req, res) => {
