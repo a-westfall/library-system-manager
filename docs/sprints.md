@@ -10,3 +10,11 @@
 - [X] Implement checkout logic
 - [X] Implement return logic
 - [X] Write overdue queries
+
+## Sprint Two Backlog
+05/18/2025 - MM/DD/2026  
+
+- [] Library card application endpoint  
+- [] Library card approval endpoint  
+- [] Book search/catalog endpoint  
+- [] Holds system  
