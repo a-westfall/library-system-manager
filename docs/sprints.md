@@ -14,7 +14,7 @@
 ## Sprint Two Backlog
 05/18/2025 - MM/DD/2026  
 
-- [] Library card application endpoint  
-- [] Library card approval endpoint  
+- [X] Library card application endpoint  
+- [X] Library card approval endpoint  
 - [] Book search/catalog endpoint  
 - [] Holds system  
