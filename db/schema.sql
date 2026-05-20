@@ -10,9 +10,22 @@ CREATE TABLE users (
 CREATE TABLE library_cards (
     card_number TEXT PRIMARY KEY,
     user_id INTEGER NOT NULL UNIQUE,
+    address TEXT NOT NULL,
     issued_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     active BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE card_applications (
+    application_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INTEGER NOT NULL UNIQUE,
+    address TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'denied')),
+    applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reviewed_at TIMESTAMP,
+    reviewed_by INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (reviewed_by) REFERENCES users(user_id)
 );
 
 CREATE TABLE books (
