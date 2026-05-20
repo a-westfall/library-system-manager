@@ -20,6 +20,9 @@ const returnRoutes = require('./routes/returnRoutes');
 // import overdue routes
 const overdueRoutes = require('./routes/overdueRoutes');
 
+// import card application routes
+const cardApplicationRoutes = require('./routes/cardRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -39,6 +42,9 @@ app.use('/api/return', returnRoutes);
 
 // overdue routes
 app.use('/api/overdue', overdueRoutes);
+
+// card application routes
+app.use('/api/application', cardApplicationRoutes);
 
 // test route
 app.get('/', (req, res) => {
