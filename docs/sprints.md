@@ -12,9 +12,16 @@
 - [X] Write overdue queries
 
 ## Sprint Two Backlog
-05/18/2025 - MM/DD/2026  
+05/18/2025 - 05/24/2026 
 
 - [X] Library card application endpoint  
 - [X] Library card approval endpoint  
 - [X] Book search/catalog endpoint  
 - [X] Holds system  
+
+## Sprint Three Backlog
+05/24/2026 - MM/DD/2026  
+
+- [] List pending applications endpoint  
+- [] In-app hold ready notifications  
+- [] Basic analytics endpoints  
