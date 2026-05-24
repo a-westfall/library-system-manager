@@ -26,6 +26,9 @@ const cardApplicationRoutes = require('./routes/cardRoutes');
 // import search routes
 const searchRoutes = require('./routes/searchRoutes');
 
+// import hold routes
+const holdRoutes = require('./routes/holdRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -51,6 +54,9 @@ app.use('/api/application', cardApplicationRoutes);
 
 // search routes
 app.use('/api/search', searchRoutes);
+
+// hold routes
+app.use('/api/holds', holdRoutes);
 
 // test route
 app.get('/', (req, res) => {
