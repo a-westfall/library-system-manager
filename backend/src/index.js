@@ -29,6 +29,9 @@ const searchRoutes = require('./routes/searchRoutes');
 // import hold routes
 const holdRoutes = require('./routes/holdRoutes');
 
+// import notification routes
+const notificationRoutes = require('./routes/notificationRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -57,6 +60,9 @@ app.use('/api/search', searchRoutes);
 
 // hold routes
 app.use('/api/holds', holdRoutes);
+
+// notification routes
+app.use('/api/notifications', notificationRoutes);
 
 // test route
 app.get('/', (req, res) => {

@@ -46,12 +46,38 @@ const returnBook = async (req, res) => {
             `UPDATE copies SET status = 'available' WHERE barcode = $1`,
             [barcode]
         );
+
+        // notify patron their hold is ready if needed
+        const isbn = await pool.query(
+            `SELECT isbn FROM copies WHERE barcode = $1`,
+            [barcode]
+        );
+        // find patron who must be notified
+        const notify = await pool.query(
+            `SELECT user_id 
+            FROM holds 
+            WHERE date_placed IN (SELECT MIN(date_placed) FROM holds WHERE isbn = $1)`,
+            [isbn.rows[0].isbn]
+        );
+        if (notify.rows.length > 0) {
+
+            // get book title
+            const book = await pool.query(
+                `SELECT title FROM books WHERE isbn = $1`,
+                [isbn.rows[0].isbn]
+            );
+
+            // notify patron
+            await pool.query(
+                `INSERT INTO notifications (user_id, message) VALUES ($1, $2)`,
+                [notify.rows[0].user_id, `Your hold for "${book.rows[0].title}" is ready!`]
+            );
+        }
+
         await pool.query(`COMMIT`);
 
         // return success code
         res.status(200).json({ message: 'Return successful.' });
-
-        // TODO: notify next patron in hold queue if hold exists
 
     } catch (err) {
 

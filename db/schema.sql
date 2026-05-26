@@ -64,5 +64,14 @@ CREATE TABLE holds (
     FOREIGN KEY (isbn) REFERENCES books(isbn)
 );
 
+CREATE TABLE notifications (
+    notification_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 ALTER TABLE checkouts
 ADD CONSTRAINT due_date_check CHECK (due_date - checkout_date = 21);

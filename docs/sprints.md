@@ -23,5 +23,5 @@
 05/24/2026 - MM/DD/2026  
 
 - [] List pending applications endpoint  
-- [] In-app hold ready notifications  
+- [X] In-app hold ready notifications  
 - [] Basic analytics endpoints  
