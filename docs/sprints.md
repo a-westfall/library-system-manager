@@ -20,8 +20,17 @@
 - [X] Holds system  
 
 ## Sprint Three Backlog
-05/24/2026 - MM/DD/2026  
+05/24/2026 - 05/26/2026 
 
 - [X] List pending applications endpoint  
 - [X] In-app hold ready notifications  
 - [X] Basic analytics endpoints  
+
+## Sprint Four Backlog
+05/27/2026 - MM/DD/2026  
+
+- [] Book and copy management endpoints  
+- [] Most popular books analytics  
+- [] Hold expiration system  
+- [] Application denial analytics  
+- [] Docker and deployment  
