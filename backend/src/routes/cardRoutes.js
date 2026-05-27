@@ -10,7 +10,7 @@ const express = require('express');
 const router = express.Router();
 
 // register from the controller
-const { applyForCard, reviewApplication } = require('../controllers/cardController');
+const { applyForCard, reviewApplication, getPendingApplications } = require('../controllers/cardController');
 
 // middleware registration
 const { authenticateUser, authorizeRole } = require('../middleware/auth');
@@ -20,5 +20,8 @@ router.post('/', authenticateUser, applyForCard);
 
 // PATCH /api/application/application_id #
 router.patch('/:application_id', authenticateUser, authorizeRole('librarian', 'admin'), reviewApplication);
+
+// GET /api/application/pending
+router.get('/pending', authenticateUser, authorizeRole('librarian', 'admin'), getPendingApplications);
 
 module.exports = router;

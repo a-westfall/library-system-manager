@@ -106,4 +106,31 @@ const reviewApplication = async (req, res) => {
 
 };
 
-module.exports = { applyForCard, reviewApplication };
+// list all pending applications
+const getPendingApplications = async (req, res) => {
+
+    // filter by status
+    const status = req.query.status || 'pending';
+
+    try {
+
+        // get applications
+        const result = await pool.query(
+            `SELECT card_applications.application_id, users.name, users.email, card_applications.address, card_applications.applied_at
+            FROM card_applications JOIN users on card_applications.user_id = users.user_id
+            WHERE status = $1
+            ORDER BY applied_at DESC`,
+            [status]
+        );
+        
+        // return result
+        res.status(200).json(result.rows);
+
+    } catch (err) {
+        
+        console.error(err);
+        res.status(500).json({ error: 'Server error.'})
+    }
+};
+
+module.exports = { applyForCard, reviewApplication, getPendingApplications };
