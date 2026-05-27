@@ -22,6 +22,6 @@
 ## Sprint Three Backlog
 05/24/2026 - MM/DD/2026  
 
-- [] List pending applications endpoint  
+- [X] List pending applications endpoint  
 - [X] In-app hold ready notifications  
-- [] Basic analytics endpoints  
+- [X] Basic analytics endpoints  
