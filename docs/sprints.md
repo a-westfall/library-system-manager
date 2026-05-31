@@ -29,7 +29,7 @@
 ## Sprint Four Backlog
 05/27/2026 - MM/DD/2026  
 
-- [] Book and copy management endpoints  
+- [X] Book and copy management endpoints  
 - [] Most popular books analytics  
 - [] Hold expiration system  
 - [] Application denial analytics  

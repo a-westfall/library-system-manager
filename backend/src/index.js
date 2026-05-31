@@ -35,6 +35,9 @@ const notificationRoutes = require('./routes/notificationRoutes');
 // import analytics routes
 const analyticsRoutes = require('./routes/analyticsRoutes');
 
+// import catalog routes
+const catalogRoutes = require('./routes/catalogRoutes');
+
 const app = express();
 
 // port for app to run on
@@ -69,6 +72,9 @@ app.use('/api/notifications', notificationRoutes);
 
 // analytics routes
 app.use('/api/analytics', analyticsRoutes);
+
+// catalog routes
+app.use('/api/catalog', catalogRoutes);
 
 // test route
 app.get('/', (req, res) => {
