@@ -38,6 +38,9 @@ const analyticsRoutes = require('./routes/analyticsRoutes');
 // import catalog routes
 const catalogRoutes = require('./routes/catalogRoutes');
 
+// import hold expiration routes
+const { startHoldExpirationJob } = require('./jobs/holdExpiration');
+
 const app = express();
 
 // port for app to run on
@@ -87,3 +90,6 @@ app.listen(PORT, () => {
 
     console.log(`Server running on port ${PORT}`);
 });
+
+// start scheduled jobs
+startHoldExpirationJob();
