@@ -93,4 +93,29 @@ const getCheckoutsPerMonth = async (req, res) => {
     }
 };
 
-module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats };
+// get most popular books
+const getPopularBooks = async (req, res) => {
+
+    try {
+
+        // get 10 most popular books
+        const result = await pool.query(
+            `SELECT COUNT(*) AS times_checked_out, books.isbn, books.author, books.title, books.genre
+            FROM checkouts 
+            JOIN copies ON checkouts.barcode = copies.barcode
+            JOIN books ON copies.isbn = books.isbn
+            GROUP BY books.isbn, books.author, books.title, books.genre
+            ORDER BY times_checked_out DESC
+            LIMIT 10`
+        );
+
+        return res.status(200).json(result.rows);
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).json({ error: 'Server error.'});
+    }
+};
+
+module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks };

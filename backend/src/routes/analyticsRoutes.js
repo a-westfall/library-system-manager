@@ -10,7 +10,7 @@ const express = require('express');
 const router = express.Router();
 
 // register from the controller
-const { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats } = require('../controllers/analyticsController');
+const { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks } = require('../controllers/analyticsController');
 
 // middleware registration
 const { authenticateUser, authorizeRole } = require('../middleware/auth');
@@ -20,7 +20,11 @@ router.get('/inventory', authenticateUser, authorizeRole('librarian', 'admin'), 
 
 // GET /api/analytics/overdue
 router.get('/overdue', authenticateUser, authorizeRole('librarian', 'admin'), getOverdueStats);
+
 // GET /api/analytics/checkouts
 router.get('/checkouts', authenticateUser, authorizeRole('librarian', 'admin'), getCheckoutsPerMonth);
+
+// GET /api/analytics/popular-books
+router.get('/popular-books', authenticateUser, authorizeRole('librarian', 'admin'), getPopularBooks);
 
 module.exports = router;
