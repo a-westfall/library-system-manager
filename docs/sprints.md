@@ -27,10 +27,10 @@
 - [X] Basic analytics endpoints  
 
 ## Sprint Four Backlog
-05/27/2026 - MM/DD/2026  
+05/27/2026 - 06/01/2026  
 
 - [X] Book and copy management endpoints  
 - [X] Most popular books analytics  
 - [X] Hold expiration system  
 - [X] Application denial analytics  
-- [] Docker and deployment  
+- [X] Docker and deployment  
