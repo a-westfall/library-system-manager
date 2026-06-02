@@ -24,6 +24,7 @@ CREATE TABLE card_applications (
     applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     reviewed_at TIMESTAMP,
     reviewed_by INTEGER,
+    denial_reason TEXT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (reviewed_by) REFERENCES users(user_id)
 );

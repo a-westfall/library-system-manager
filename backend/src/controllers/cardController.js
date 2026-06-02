@@ -51,7 +51,7 @@ const applyForCard = async (req, res) => {
 const reviewApplication = async (req, res) => {
 
     // get required information
-    const { status } = req.body;
+    const { status, denial_reason } = req.body;
     const applicationID = req.params.application_id;
 
     // validate required fields
@@ -88,8 +88,8 @@ const reviewApplication = async (req, res) => {
 
         // update application status
         await pool.query(
-            `UPDATE card_applications SET status = $1, reviewed_by = $2, reviewed_at = CURRENT_TIMESTAMP WHERE application_id = $3`,
-            [status, req.user.user_id, applicationID]
+            `UPDATE card_applications SET status = $1, reviewed_by = $2, reviewed_at = CURRENT_TIMESTAMP, denial_reason = $3 WHERE application_id = $4`,
+            [status, req.user.user_id, denial_reason || null, applicationID]
         );
         await pool.query(`COMMIT`);
 

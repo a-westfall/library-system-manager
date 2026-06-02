@@ -32,5 +32,5 @@
 - [X] Book and copy management endpoints  
 - [X] Most popular books analytics  
 - [X] Hold expiration system  
-- [] Application denial analytics  
+- [X] Application denial analytics  
 - [] Docker and deployment  

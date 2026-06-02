@@ -118,4 +118,27 @@ const getPopularBooks = async (req, res) => {
     }
 };
 
-module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks };
+// get reasons why applications were denied
+const getDenialAnalytics = async (req, res) => {
+
+    try {
+
+        // get denial reasons grouped by reason
+        const result = await pool.query(
+            `SELECT denial_reason, COUNT(*) AS total
+            FROM card_applications
+            WHERE status = 'denied'
+            GROUP BY denial_reason
+            ORDER BY total DESC`
+        );
+
+        return res.status(200).json(result.rows);
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).json({ error: 'Server error.'});
+    }
+};
+
+module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks, getDenialAnalytics };
