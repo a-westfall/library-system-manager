@@ -34,3 +34,12 @@
 - [X] Hold expiration system  
 - [X] Application denial analytics  
 - [X] Docker and deployment  
+
+## Sprint Five Backlog
+06/11/2026 - MM/DD/2026  
+
+- [] Deployment to Railway  
+- [] Notify next person in queue after a hold expires  
+- [] Book update endpoint  
+- [] Approval rate analytics  
+- [] Basic frontend - checkout page and pending applications list  
