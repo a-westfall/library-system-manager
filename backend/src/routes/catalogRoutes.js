@@ -10,13 +10,16 @@ const express = require('express');
 const router = express.Router();
 
 // register from the controller
-const { addBook, addCopy, markLost } = require('../controllers/catalogController');
+const { addBook, updateBook, addCopy, markLost } = require('../controllers/catalogController');
 
 // middleware registration
 const { authenticateUser, authorizeRole } = require('../middleware/auth');
 
 // POST /api/catalog/add-book
 router.post('/add-book', authenticateUser, authorizeRole('librarian', 'admin'), addBook);
+
+// PATCH /api/catalog/update-book
+router.patch('/update-book', authenticateUser, authorizeRole('librarian', 'admin'), updateBook);
 
 // POST /api/catalog/add-copy
 router.post('/add-copy', authenticateUser, authorizeRole('librarian', 'admin'), addCopy);

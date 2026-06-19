@@ -84,6 +84,42 @@ const addCopy = async (req, res) => {
     }
 };
 
+// update information about a book
+const updateBook = async(req, res) => {
+
+    // get required information
+    const { isbn, title, genre, author, publisher, datePublished } = req.body;
+
+    // validate information
+    if (!isbn || (!title && !genre && !author && !publisher && !datePublished)) {
+
+        return res.status(400).json({error: 'ISBN and at least one other field are required.'});
+    }
+
+    try {
+
+        // update book based on available conditions
+        await pool.query(
+            `UPDATE books SET 
+            title = COALESCE($1, title),
+            genre = COALESCE($2, genre),
+            author = COALESCE($3, author),
+            publisher = COALESCE($4, publisher),
+            date_published = COALESCE($5, date_published)
+            WHERE isbn = $6`,
+            [title, genre, author, publisher, datePublished, isbn]
+        );
+
+        return res.status(200).json({message: 'Book updated successfully.'});
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).json({ error: 'Failed to update book.'});
+    }
+    
+};
+
 // mark a book as lost
 const markLost = async (req, res) => {
 
@@ -91,7 +127,7 @@ const markLost = async (req, res) => {
     const { barcode } = req.body;
 
     // validate information
-    if(!barcode) {
+    if (!barcode) {
 
         return res.status(400).json({error: 'Barcode is a required field.'});
     }
@@ -123,4 +159,4 @@ const markLost = async (req, res) => {
     }
 };
 
-module.exports = { addBook, addCopy, markLost};
+module.exports = { addBook, updateBook, addCopy, markLost};
