@@ -120,6 +120,38 @@ const updateBook = async(req, res) => {
     
 };
 
+// update information about a copy
+const updateCopy = async(req, res) => {
+
+    // get required information
+    const { barcode, isbn, status } = req.body;
+
+    // validate information
+    if (!barcode || (!isbn && !status)) {
+
+        return res.status(400).json({error: 'Barcode and at least one other field are required.'});
+    }
+
+    try {
+
+        // update copy based on available conditions
+        await pool.query(
+            `UPDATE copies SET 
+            isbn = COALESCE($1, isbn),
+            status = COALESCE($2, status)
+            WHERE barcode = $3`,
+            [isbn, status, barcode]
+        );
+
+        return res.status(200).json({message: 'Copy updated successfully.'});
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).json({error: 'Failed to update copy.'});
+    }
+};
+
 // mark a book as lost
 const markLost = async (req, res) => {
 
@@ -159,4 +191,4 @@ const markLost = async (req, res) => {
     }
 };
 
-module.exports = { addBook, updateBook, addCopy, markLost};
+module.exports = { addBook, updateBook, addCopy, updateCopy, markLost};

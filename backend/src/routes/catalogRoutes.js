@@ -10,7 +10,7 @@ const express = require('express');
 const router = express.Router();
 
 // register from the controller
-const { addBook, updateBook, addCopy, markLost } = require('../controllers/catalogController');
+const { addBook, updateBook, addCopy, updateCopy, markLost } = require('../controllers/catalogController');
 
 // middleware registration
 const { authenticateUser, authorizeRole } = require('../middleware/auth');
@@ -23,6 +23,9 @@ router.patch('/update-book', authenticateUser, authorizeRole('librarian', 'admin
 
 // POST /api/catalog/add-copy
 router.post('/add-copy', authenticateUser, authorizeRole('librarian', 'admin'), addCopy);
+
+// PATCH /api/catalog/update-copy
+router.patch('/update-copy', authenticateUser, authorizeRole('librarian', 'admin'), updateCopy);
 
 // PATCH /api/catalog/mark-lost
 router.patch('/mark-lost', authenticateUser, authorizeRole('librarian', 'admin'), markLost);
