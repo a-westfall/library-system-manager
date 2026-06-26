@@ -41,6 +41,6 @@
 - [] Deployment to Azure  
 - [X] Notify next person in queue after a hold expires  
 - [X] Book update endpoint  
-- [X] Copy update endpoint
+- [X] Copy update endpoint  
 - [X] Application approval rate analytics  
 - [] Basic frontend - checkout page and pending applications list  
