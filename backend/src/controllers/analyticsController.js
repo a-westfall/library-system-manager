@@ -141,4 +141,30 @@ const getDenialAnalytics = async (req, res) => {
     }
 };
 
-module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks, getDenialAnalytics };
+// get rate of approved applications
+const getApprovalRate = async (req, res) => {
+
+    try {
+
+        // get percentage of applications that were approved by month
+        const result = await pool.query(
+            `SELECT DATE_TRUNC('month', reviewed_at) AS month_reviewed,
+            (COUNT(*) FILTER (WHERE status = 'approved'))::float / 
+            NULLIF(COUNT(*), 0) * 100 as approval_rate
+            FROM card_applications
+            WHERE status IN ('approved', 'denied')
+            GROUP BY month_reviewed
+            ORDER BY month_reviewed`
+        );
+
+        return res.status(200).json(result.rows);
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).json({error: 'Server error.'});
+    }
+};
+
+module.exports = { getInventoryStatus, getCheckoutsPerMonth, getOverdueStats, getPopularBooks, 
+                   getDenialAnalytics, getApprovalRate };

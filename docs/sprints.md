@@ -42,5 +42,5 @@
 - [X] Notify next person in queue after a hold expires  
 - [X] Book update endpoint  
 - [X] Copy update endpoint
-- [] Approval rate analytics  
+- [X] Application approval rate analytics  
 - [] Basic frontend - checkout page and pending applications list  
