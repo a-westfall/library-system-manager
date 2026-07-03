@@ -38,7 +38,7 @@
 ## Sprint Five Backlog
 06/11/2026 - MM/DD/2026  
 
-- [] Deployment to Azure  
+- [X] Deployment to Azure  
 - [X] Notify next person in queue after a hold expires  
 - [X] Book update endpoint  
 - [X] Copy update endpoint  
